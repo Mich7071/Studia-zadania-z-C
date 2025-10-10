@@ -1,4 +1,4 @@
-//Napisz program, który sprawdzi, czy dwie liczby podane przez u¿ytkownika s¹ parzyste, nieparzyste, czy te¿ jedna z nich jest parzysta, a druga nie. Komputer powinien na koñcu wyœwietliæ odpowiedni komunikat, np. „Obie liczby s¹ parzyste” albo „Jedna parzysta, druga nie”.
+//Napisz program, ktÃ³ry sprawdzi, czy dwie liczby podane przez uÅ¼ytkownika sÄ… parzyste, nieparzyste, czy teÅ¼ jedna z nich jest parzysta, a druga nie. Komputer powinien na koÅ„cu wyÅ›wietliÄ‡ odpowiedni komunikat, np. â€Obie liczby sÄ… parzysteâ€ albo â€Jedna parzysta, druga nieâ€.
 
 #include <stdio.h>
 
@@ -9,6 +9,7 @@ int main()
     printf("Podaj dwie liczby: ");
     if(scanf("%d %d",&x,&y) != 2 ){
         printf("bledna wartosc !");
+        return 1;
     }
 
     int a=x%2;
@@ -17,9 +18,10 @@ int main()
     //sprawdzanie
     if (a+b==0) printf("Obie liczby sa parzyste");
     else if (a+b==1) printf("Jedna parzysta, druga nie");
-    else printf("nie ma parzystch liczb");
+    else if (a+b==2) printf("nie ma parzystch liczb");
 
 
     return 0;
 }
+
 
