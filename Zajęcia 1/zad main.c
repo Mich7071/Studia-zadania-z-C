@@ -1,4 +1,17 @@
-//kod V.2
+/*Zadanie główne
+Na wzgórzu, gdzie od wieków spotykają się mistrzowie magii, dochodzi do pojedynku. Dwóch czarodziejów staje naprzeciw siebie: jeden kierowany przez Ciebie, drugi sterowany przez moc tajemniczej maszynerii. Każdy z nich ma w zanadrzu trzy potężne zaklęcia: Ognistą Kulę, która spala wszystko na swojej drodze, Lodową Strzałę, zdolną zatrzymać nawet najszybszy ruch, oraz Błyskawicę, przecinającą powietrze z hukiem i siłą burzy.
+
+Tylko jedno zaklęcie może zwyciężyć w tej krótkiej walce — ogień topi lód, lód zatrzymuje błyskawicę, a błyskawica rozprasza ogień. Jeśli obaj czarodzieje wybiorą tę samą moc, energia zderzy się i pojedynek zakończy się remisem.
+
+Twoim zadaniem jest napisać program w języku C, który przeprowadzi taki pojedynek. Gracz powinien wprowadzić swój wybór, a komputer wylosować zaklęcie. Program powinien następnie wyświetlić oba wybory i ogłosić wynik starcia.
+
+Aby rozwiązać to zadanie, przydadzą się:
+
+instrukcje printf i scanf do obsługi wejścia/wyjścia,
+funkcje losujące rand() i srand(time(NULL)) z biblioteki <stdlib.h> i <time.h>,
+instrukcja warunkowa if do sprawdzenia, kto wygrał.*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -41,3 +54,4 @@ int main()
 
     return 0;
 }
+
