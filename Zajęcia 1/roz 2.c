@@ -1,4 +1,4 @@
-//Napisz program, ktÃ³ry sprawdzi, czy dwie liczby podane przez uÅ¼ytkownika sÄ… parzyste, nieparzyste, czy teÅ¼ jedna z nich jest parzysta, a druga nie. Komputer powinien na koÅ„cu wyÅ›wietliÄ‡ odpowiedni komunikat, np. â€Obie liczby sÄ… parzysteâ€ albo â€Jedna parzysta, druga nieâ€.
+//Napisz program, który sprawdzi, czy dwie liczby podane przez u¿ytkownika s¹ parzyste, nieparzyste, czy te¿ jedna z nich jest parzysta, a druga nie. Komputer powinien na koñcu wyœwietliæ odpowiedni komunikat, np. „Obie liczby s¹ parzyste” albo „Jedna parzysta, druga nie”.
 
 #include <stdio.h>
 
@@ -23,5 +23,4 @@ int main()
 
     return 0;
 }
-
 
