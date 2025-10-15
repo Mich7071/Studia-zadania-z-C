@@ -72,7 +72,7 @@ int main()
                         p1=(int)w1[i];
                         p2=(int)w2[i];
 
-                        if(p1 != p2 && p1+32 != p2){
+                        if(p1 != p2 && p1+32 != p2){ //błąd
                             printf("\nWiadmomosci nie sa identyczne!\n");
                             u=1;
                             break;
@@ -102,3 +102,4 @@ int main()
 
     return 0;
 }
+
