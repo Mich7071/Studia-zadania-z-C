@@ -1,3 +1,5 @@
+//Napisz program, który poprosi użytkownika o dwie liczby całkowite. Następnie obliczy ich sumę i średnią arytmetyczną i poda wynik na ekranie.
+
 #include <stdio.h>
 
 int main()
@@ -15,7 +17,7 @@ int main()
     int suma=x+y;
     printf("suma %d\n",suma);
 
-    double srednia = (double) suma/2; //*mozna zastosowac - double srednia = suma/2.0;
+    double srednia = (double) suma/2.0; 
 
 
     //Wynik
@@ -24,3 +26,4 @@ int main()
 
     return 0;
 }
+
