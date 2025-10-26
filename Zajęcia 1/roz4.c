@@ -1,10 +1,12 @@
-//Napisz program, który symuluje rzut kostk¹ o dowolnej liczbie œcian. Najpierw u¿ytkownik podaje, ile œcian ma mieæ kostka (np. 4, 6, 10, 20…), a nastêpnie komputer losuje wynik od 1 do podanej liczby i wyœwietla go na ekranie.
+//Napisz program, ktÃ³ry symuluje rzut kostkÄ… o dowolnej liczbie Å›cian. Najpierw uÅ¼ytkownik podaje, ile Å›cian ma mieÄ‡ kostka (np. 4, 6, 10, 20â€¦), a nastÄ™pnie komputer losuje wynik od 1 do podanej liczby i wyÅ›wietla go na ekranie.
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 
-int main()
-{
+int main(){
+    
+    srand(time(NULL));
+    
     //wybor
     int kosc;
 
@@ -16,7 +18,7 @@ int main()
     }
 
     //losowanie
-    srand(time(NULL));
+
     int los = rand()%kosc + 1;
 
     printf("wylosowana liczba to: %d",los);
@@ -26,3 +28,4 @@ int main()
 
     return 0;
 }
+
