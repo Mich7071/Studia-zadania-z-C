@@ -18,8 +18,7 @@ int moc=100;
 
 int main() {
     while (1) {
-        int i=0,haslo=1234,proba=0;//dane Logowanie
-        int l=1;//menu
+        int i=0,haslo=1234,proba=0;
 
         //Logowanie
         while (1) {
@@ -30,7 +29,9 @@ int main() {
             scanf("%d",&proba);
             if (getchar()!='\n') {
                 while (getchar() != '\n');
+
                 printf("\nZle haslo, pozostalo prob %d\n",3-i);
+
                 if(i==3) {
                     printf("\nKoniec prob");
                     return 0;
@@ -55,7 +56,7 @@ int main() {
         //                                     Menu
         //--------------------------------------------------------------------------------------
 
-        int x,wartosc;
+        int x,wartosc,l=1;
 
         do {
             printf("\n1 - Charge the reactor core:\n"
@@ -64,7 +65,7 @@ int main() {
                    "0 - Log out:\n");
 
             //wybor
-            if (scanf("%d",&x) !=1) {
+            if (scanf("%d",&x) !=1 || (getchar() != '\n')) {
                 printf("\n Nie ma takiej opcji\n");
                 while (getchar() != '\n');
                 continue;
@@ -75,7 +76,7 @@ int main() {
                 case 1:
                     printf("Podaj wartosc mocy jaka dodac: ");
 
-                    if (scanf("%d",&wartosc) !=1 || wartosc<0) {
+                    if (scanf("%d",&wartosc) !=1 || wartosc<0 || (getchar() != '\n')) {
                         printf("\n wartosc nie prawidlowa\n");
                         while (getchar() != '\n');
                         break;
@@ -87,7 +88,7 @@ int main() {
                 case 2:
                     printf("Podaj wartosc mocy jaka odjac: ");
 
-                    if (scanf("%d",&wartosc) !=1 ||moc<wartosc || wartosc<0) {
+                    if (scanf("%d",&wartosc) !=1 || moc<wartosc || wartosc<0 || (getchar() != '\n')) {
                         printf("\n zbyt duża wartość zużycia lub zle dane!\n");
                         while (getchar() != '\n');
                         break;
