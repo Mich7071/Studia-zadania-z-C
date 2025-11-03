@@ -23,31 +23,18 @@ int main() {
         //Logowanie
         while (1) {
             i+=1;
+
             printf("Podaj Haslo: ");
 
-            //Sprawdzanie poprawności danych
             scanf("%d",&proba);
-            if (getchar()!='\n') {
-                while (getchar() != '\n');
-
-                printf("\nZle haslo, pozostalo prob %d\n",3-i);
-
-                if(i==3) {
-                    printf("\nKoniec prob");
-                    return 0;
-                }
-                continue;
-            }
-
-
-            //Sprawdzanie
-            if (proba==haslo) {
+            if (proba==haslo && getchar()=='\n') {
                 printf("\nHaslo Poprawne.\n");
                 break;
-            }else if(i==3) {
+            }else if (i==3) {
                 printf("\nKoniec prob");
                 return 0;
-            }else {
+            }else{
+                while (getchar() != '\n');
                 printf("\nZle haslo, pozostalo prob %d\n",3-i);
             }
         }
@@ -75,23 +62,24 @@ int main() {
 
                 case 1:
                     printf("Podaj wartosc mocy jaka dodac: ");
-
-                    if (scanf("%d",&wartosc) !=1 || wartosc<0 || (getchar() != '\n')) {
-                        printf("\n wartosc nie prawidlowa\n");
-                        while (getchar() != '\n');
-                        break;
+                    while (1) {
+                        if (scanf("%d",&wartosc) !=1 || wartosc<0 || (getchar() != '\n')) {
+                            printf("\n wartosc nie prawidlowa\n");
+                            while (getchar() != '\n');
+                        }else break;
                     }
+
                     moc+=wartosc;
                     printf("\nOperacja udana\n");
                     break;
 
                 case 2:
                     printf("Podaj wartosc mocy jaka odjac: ");
-
-                    if (scanf("%d",&wartosc) !=1 || moc<wartosc || wartosc<0 || (getchar() != '\n')) {
-                        printf("\n zbyt duża wartość zużycia lub zle dane!\n");
-                        while (getchar() != '\n');
-                        break;
+                    while (1) {
+                        if (scanf("%d",&wartosc) !=1 || moc<wartosc || wartosc<0 || (getchar() != '\n')) {
+                            printf("\n zbyt duża wartość zużycia lub zle dane!\n");
+                            while (getchar() != '\n');
+                        }else break;
                     }
                     moc-=wartosc;
                     printf("\nOperacja udana\n");
