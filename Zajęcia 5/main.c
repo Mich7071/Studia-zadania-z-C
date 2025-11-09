@@ -4,11 +4,8 @@
 #define A 5
 
 void generator_dnia5(int zadowolenie [A][A]);
-
 void srednia(int zadowolenie [A][A],float wartosci[A]);
-
 void tablica();
-
 void tablica(int zadowolenie[A][A],char nazwy[A][30]);
 
 int main() {
