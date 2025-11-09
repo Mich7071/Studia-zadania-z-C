@@ -10,9 +10,10 @@ void tablica(int zadowolenie[A][A],char nazwy[A][30]);
 
 int main() {
     srand(time(NULL));
-    int zadowolenie[A][A], r=0;
+
+    int zadowolenie[A][A], r=0,wybor;
     char nazwy[A][30];
-    int wybor; float wartosci[A];
+    float wartosci[A];
 
     printf("Podaj nazwy pieciu systemow planetarnych (do 30 znakow) : \n");
 
@@ -37,17 +38,16 @@ int main() {
     }
 
     //wygenerowanie danych w tabelach
-    for (int i=0;i<A-1;i++) {
-        generator_dnia5(zadowolenie);
-    }
-    srednia(zadowolenie, wartosci);
+    for (int i=0;i<A-1;i++) generator_dnia5(zadowolenie);
 
+    srednia(zadowolenie, wartosci);
     tablica(zadowolenie,nazwy);
 
 
 
 
     while (1) {
+
         printf("\n\n1. Oblicz średni poziom zadowolenia we wszystkich systemach\n"
                "2. Wskaż system o najwyższym średnim poziomie zadowolenia\n"
                "3. Wskaż system o najniższym średnim poziomie zadowolenia\n"
@@ -64,13 +64,12 @@ int main() {
         }
 
         switch(wybor) {
+
             case 1:
                 for (int i=0;i<A;i++) {
                     printf("\n%.1f",wartosci[i]);
                 }
                 break;
-
-
 
             case 5:
                 generator_dnia5(zadowolenie);
@@ -80,13 +79,14 @@ int main() {
             case 6:
                 tablica(zadowolenie,nazwy);
                 break;
+
+            case 0:
+                return 0;
+
+            default:
+                printf("\nzle dane!\n");
+                break;
         }
-
-
-
-
-
-
     }
 }
 
