@@ -9,11 +9,11 @@ int main(void) {
         float x=0,y=0;
 
 
-        printf("\n1.Dodowanie\n"
+        printf("\n1.Dodawanie\n"
                "2.Odejmowanie\n"
                "3.Mnożenie\n"
-               "4.dzielenie\n"
-               "5.zakończ działanie\n"
+               "4.Dzielenie\n"
+               "5.Zakoncz działanie\n"
                "Wybór: ");
 
         if (scanf("%d",&w) !=1 || w<1 || w>5) {
