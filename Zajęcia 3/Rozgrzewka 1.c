@@ -1,4 +1,4 @@
-//Na pierwszym semestrze student uzyskuje oceny z kilku przedmiotów, które mo¿na zapisaæ w postaci tablicy liczbowej. Napisz program, który wczyta wszystkie oceny studenta i zapisze je w tablicy (do uzyskania jest maksymalnie 14 ocen). Przyjmujemy, ¿e oceny s¹ wystawiane w skali od 2 do 5, gdzie 2 oznacza ocenê niedostateczn¹, a 5 bardzo dobr¹. Ka¿d¹ ocenê nale¿y wczytywaæ do skutku, dopóki u¿ytkownik nie poda poprawnej wartoœci z tego zakresu. Po wczytaniu wszystkich danych program powinien obliczyæ i wyœwietliæ œredni¹ ocen, najwy¿sz¹ i najni¿sz¹ ocenê oraz policzyæ, ile razy wyst¹pi³a ocena niedostateczna (2) i bardzo dobra (5). Wyniki nale¿y wypisaæ w czytelnej formie, z odpowiednimi opisami poszczególnych wartoœci.
+//Na pierwszym semestrze student uzyskuje oceny z kilku przedmiotÃ³w, ktÃ³re moÅ¼na zapisaÄ‡ w postaci tablicy liczbowej. Napisz program, ktÃ³ry wczyta wszystkie oceny studenta i zapisze je w tablicy (do uzyskania jest maksymalnie 14 ocen). Przyjmujemy, Å¼e oceny sÄ… wystawiane w skali od 2 do 5, gdzie 2 oznacza ocenÄ™ niedostatecznÄ…, a 5 bardzo dobrÄ…. KaÅ¼dÄ… ocenÄ™ naleÅ¼y wczytywaÄ‡ do skutku, dopÃ³ki uÅ¼ytkownik nie poda poprawnej wartoÅ›ci z tego zakresu. Po wczytaniu wszystkich danych program powinien obliczyÄ‡ i wyÅ›wietliÄ‡ Å›redniÄ… ocen, najwyÅ¼szÄ… i najniÅ¼szÄ… ocenÄ™ oraz policzyÄ‡, ile razy wystÄ…piÅ‚a ocena niedostateczna (2) i bardzo dobra (5). Wyniki naleÅ¼y wypisaÄ‡ w czytelnej formie, z odpowiednimi opisami poszczegÃ³lnych wartoÅ›ci.
 
 #include <stdio.h>
 
@@ -35,12 +35,13 @@ int main()
 
     //wypisywanie wynikow
     p=p/14.0;
-    printf("œredni¹ ocen: %.2f\n",p);
+    printf("Srednia ocen: %.2f\n",p);
 
-    printf("ile dwujek: %d\n",ile_d);
+    printf("ile dwojek: %d\n",ile_d);
     printf("ile piatek: %d\n",ile_p);
     printf("maksymalna ocena %d\n",max);
     printf("minimalna ocena %d\n",min);
 
     return 0;
 }
+
