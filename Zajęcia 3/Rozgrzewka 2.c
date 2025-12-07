@@ -23,11 +23,9 @@ int main() {
         x=tab[i];
         printf("%d: ",i+1);
 
-
         for (;x>0;x--) printf("*");
 
             printf("\n");
-
         }
     return 0;
 }
