@@ -7,8 +7,7 @@ int main() {
 
     printf("Podaj 10 temperatur: \n");
 
-    while (1) {
-        if (i==10) break;
+   while (i<10) {
 
         if (scanf("%f",&temp[i]) == 1) {
             srednia+=temp[i];
