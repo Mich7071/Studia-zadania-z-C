@@ -39,6 +39,5 @@ int main() {
 
     printf("\nTempereatura byla wysza od sredniej w %d dniach",ile);
 
-
     return 0;
 }
