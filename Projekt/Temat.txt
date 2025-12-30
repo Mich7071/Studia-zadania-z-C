@@ -1,0 +1,21 @@
+2. Rejestr Bohaterów Gildii Poszukiwaczy Przygód
+Gildia Poszukiwaczy Przygód to jedna z najstarszych i najbardziej wpływowych organizacji Starego Kontynentu.
+Jej szeregi tworzą wojownicy, magowie, tropiciele, alchemicy, bardowie, łotrzy i przedstawiciele wielu innych profesji.
+Każdy nowy członek, zanim zostanie dopuszczony do wypraw, musi zostać oficjalnie wpisany do Rejestru Gildii.
+Dokładne prowadzenie ewidencji jest kluczowe: 
+
+od właściwego doboru drużyn zależy bezpieczeństwo misji, powodzenie kontraktów i reputacja całej organizacji.
+
+Twoim zadaniem jest stworzenie programu umożliwiającego zarządzanie danymi o bohaterach: 
+
+ich rejestracją, wyszukiwaniem, modyfikacją, sortowaniem, usuwaniem oraz zapisem/odczytem z pliku. 
+System ma wspierać mistrza gildii w organizowaniu zespołów do konkretnych zadań, monitorowaniu reputacji członków oraz śledzeniu ich aktywności - zwłaszcza tych, którzy zaginęli podczas wypraw.
+
+Każdy bohater posiada minimalny (może być rozszerzony) zestaw cech, które muszą zostać zapisane w systemie:
+
+imię bohatera - unikalne imię nadawane podczas rejestracji, o maksymalnej długości 100 znaków. Pełni rolę identyfikatora i nie może być zmieniane po dodaniu obiektu;
+rasa - opis gatunku bohatera (np. człowiek, elf, krasnolud, ork, tiefling);
+klasa bohatera - specjalizacja lub profesja, którą posługuje się bohater: wojownik, mag, kapłan, łotrzyk, łowca, druid;
+poziom doświadczenia - wartość liczbowa opisująca ogólny stopień rozwoju bohatera. Zwykle zaczyna się od poziomu 1 i wzrasta wraz z kolejnymi misjami;
+reputacja - liczba reprezentująca ogólną opinię o bohaterze (zakres sugerowany: 0–100). Wysoka reputacja oznacza zaufanie i profesjonalizm, niska może wskazywać na niekompetencję… lub niebezpieczne nawyki;
+status bohatera - opis jego aktualnej dostępności dla Gildii: aktywny, na misji, ranny, zaginiony, zawieszony. Bohater przebywający na misji nie może zostać usunięty z rejestru do czasu powrotu. Próba usunięcia takiego wpisu powinna zostać zablokowana z odpowiednim komunikatem.
