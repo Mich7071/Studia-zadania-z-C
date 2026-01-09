@@ -33,10 +33,9 @@ Po wczytaniu dwóch wiadomości program powinien wyświetlić menu operacji, z k
 4. Szyfruj wiadomość 1 (ROT13)
 5. Odwróć wiadomość 1
 0. Zakończ transmisję
-Wybierz opcję:
+Wybierz opcję: 
 Menu powinno działać w pętli, umożliwiając agentowi wykonywanie wielu operacji bez ponownego uruchamiania programu.
 Wybór opcji 0 kończy działanie systemu i wyświetla komunikat o zakończeniu sesji transmisyjnej.*/
-
 #include <stdio.h>
 
 int main()
@@ -93,7 +92,8 @@ int main()
             continue;
         }
 
-        switch(x) {
+        switch(x){
+
             case 1:
                 printf("\ndlugosc pierwszej wiadomosci to %d znakow\n", ilosc1);
                 printf("\ndlugosc drugiej wiadomosci to %d znakow\n\n", ilosc2);
@@ -101,63 +101,78 @@ int main()
 
 
             case 2:
-                i=0;
                 if(ilosc1 != ilosc2){
                     printf("\nWiadmomosci nie sa identyczne!\n");
                     break;
-                }else{
+                    }
+                else{
                     while(i<ilosc1){
                         p1=(int)w1[i];
                         p2=(int)w2[i];
 
-                        if(p1 != p2 && p1+32 != p2){ //błąd
+                        if(p1 != p2 && p1+32 != p2){
                             printf("\nWiadmomosci nie sa identyczne!\n");
                             u=1;
                             break;
-                        }
+                            }
                         i=i+1;
-                    }
+                        }
                     if(u==0){
                         printf("\nwiadmosci sa identyczne\n");
-                    }
+                        }
 
                     break;
-                }
+                    }
 
 
             case 3:
-                printf("%s %s",w1,w2);
+                for(i=0;i<=ilosc1;i=i+1){
+                    printf("%c",w1[i]);}
+                printf(" ");
+                for(i=0;i<=ilosc2;i=i+1){
+                    printf("%c",w2[i]);}
                 break;
 
-            case 4:
-                i=0;
 
-                while(i<ilosc1) {
-                    if (w1[i]>='A' && w1[i]<='Z' || w1[i]>='a' && w1[i]<='z') {
-                        if (w1[i]>=78 && w1[i]<=90 || w1[i]>=110 && w1[i]<=122) {
-                            w1[i]-=26;
-                        }
-                        w1[i]+=13;
+            case 4:
+                ;
+                for(i=0;i<=ilosc1-1;i=i+1)
+               {
+
+                    int test=(int)w1[i];
+                    int l=0;
+                    if ((test<65) || (test>90 && test<97) || (test>122)){
+                        w1[i]=w1[i];
+                        continue;
                     }
-                    i++;
-                }
+
+                    else if (test<=90 && test>=65){
+                        l=(test-65+13)%26 + 65;
+                        w1[i]=(char)l;}
+
+                    else {
+                        l=(test-97+13)%26 + 97;
+                        w1[i]=(char)l;}
+               }
+                for(i=0;i<=ilosc1;i=i+1){
+                    printf("%c",w1[i]);}
                 break;
 
             case 5:
-                i=0;
-                while(i<ilosc1) {
-                    printf("%c",w1[ilosc1-i-1]);
-                    i++;
-                }
+                for(i=ilosc1;i>=0;i=i-1){
+                    printf("%c",w1[i]);}
                 break;
 
             case 0:
-                printf("zakonczenie sesji transmisyjne\n");
+                printf("koniec sesji transmisyjnej.");
                 return 0;
+
 
             default: printf("\nPodaj poprawna wartosc: ");
         }
     u=0;
 
     }while(1);
+
+    return 0;
 }
