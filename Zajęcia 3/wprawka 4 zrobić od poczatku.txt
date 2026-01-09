@@ -1,0 +1,129 @@
+#include <stdio.h>
+
+int main() {
+    char nr[28]={'\0'},nr2[26];
+    int p=0,cala_liczba[30]={0};
+
+    //wpisanie nazwy
+    printf("Podaj numer 26 znakowy lub 28 jesli jest kod kraju (tylko duze litery, jesli wystepuja): ");
+    scanf("%[^\n]s",nr);
+
+    //zliczenie długości numeru
+    for (int i=0;i<28;i++) {
+        if (nr[i] != '\0') {
+            p+=1;
+        }else break;
+    }
+
+    //Sprawdzenie warunków
+    if (p != 26 && p != 28) {
+        printf("Ciag musi sie skladac z dokladnie z 26 znakow lub 28!");
+        return 1;
+    }
+
+    //sprawdzenie kodu 28
+    if (p == 28) {
+        if (nr[2] == '0' && nr[3] == '0'){
+            printf("Pierwsze dwie cyfry (cyfry kontrolne) nie moga byc zerami — czyli nie tworza liczby „XX00” !");
+            return 1;
+        }
+
+        for (int i=2;i<28;i++) {
+            if (nr[i] < '0' || nr[i] > '9') {
+                printf("Kazdy znak musi byc cyfra po za pierwszymi dwoma !");
+                return 1;
+            }
+        }
+
+        char magazyn;
+        for (int i = 0; i < 4; i++) {
+            magazyn = nr[27-3+i];
+            nr[27-3+i]=nr[0+i];
+            nr[0+i]=magazyn;
+        }
+
+        for (int i = 0; i < 24; i++) {
+            cala_liczba[i]=(int)nr[i]-'0';
+            printf("%d",cala_liczba[i]);
+        }
+
+        int o=1;
+        do{
+
+            int swap=0;
+            swap=((int)nr[23+o]-'A'+10)/10;
+            cala_liczba[23+o]= swap;
+            printf("%d",cala_liczba[23+o]);
+            swap=((int)nr[23+o]-'A'+10)%10;
+            cala_liczba[24+o]= swap;
+            printf("%d",cala_liczba[24+o]);
+            o++;
+        }while (o<=2);
+
+        cala_liczba[28]=(int)nr[26]-'0';
+        printf("%d",cala_liczba[28]);
+        cala_liczba[29]=(int)nr[27]-'0';
+        printf("%d",cala_liczba[29]);
+
+        o=0;
+        int liczba,zapawowa=0;
+        while (1) {
+            liczba=0;
+
+            liczba=(cala_liczba[0+o]+(zapawowa > 0 ? zapawowa / 10 : 0)*10+cala_liczba[1+o]+(zapawowa % 10));
+
+            if (liczba/97==1){
+                zapawowa=liczba%97;
+                cala_liczba[0+o]=0;
+                cala_liczba[1+o]=1;
+            }else {
+                zapawowa=liczba%97;
+                cala_liczba[0+o]=0;
+                cala_liczba[1+o]=0;
+            }
+            o+=2;
+            if (o<=30) {
+                o=0;
+            }
+
+            for (int i=0; i<30;i=i+2) {
+                printf("%d",cala_liczba[i]);
+                printf("%d",cala_liczba[i+1]);
+            }
+            printf("\n");
+
+        }
+    }
+
+
+
+
+    /*}else { //sprawdzenie kodu 26
+        for (int i = 0; i < 26; i++) {
+            nr2[i]=nr[i];
+        }
+
+        if (nr2[0] == '0' && nr2[1] == '0') {
+            printf("Pierwsze dwie cyfry (cyfry kontrolne) nie moga byc zerami !");
+            return 1;
+        }
+        char magazyn;
+        for (int i=1;i<=4;i++) {
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+    //printf("Numer konta wyglada poprawnie");
+*/
+    return 0;
+}
