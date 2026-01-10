@@ -9,8 +9,9 @@ void displaySensors(double sensors[], int n);
 void calibrateSensors(double sensors[], int n, double offset);
 int findFaultySensor(double sensors[], int n, double minAllowed, double maxAllowed);
 void modifySensor(double sensors[], int n, int index);
+int readValue(double *value, double min, double max);
 
-
+int walidacja;
 
 int main()
 {
@@ -99,14 +100,23 @@ int showMenu(){
 
 void readSensors(double sensors[], int n){
     printf("\nPobieranie danych: \n\n");
+
     for (int i=0;i<n;)
     {
         printf("Wartosc %d: \n",i+1);
-        if(scanf("%lf", &sensors[i]) != 1 || sensors[i] > 200.0 || sensors[i] < -100.0){
+        if(scanf("%lf", &sensors[i]) != 1){
             printf("zla wartosc!\n");
             while (getchar() != '\n');
             continue;
-        }else {i=i+1;}
+        }else {
+            walidacja = readValue(&sensors[i], -100.0, 200.0);
+            if (walidacja != 1) {
+                printf("Zla wartosc przedial od -100 do 200!\n");
+                continue;
+            }else i++;
+        }
+
+
     }
 }
 
@@ -122,9 +132,16 @@ void displaySensors(double sensors[], int n){
 
 void calibrateSensors(double sensors[], int n, double offset){
     printf("\nKalibrowanie:\n");
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;){
         sensors[i]=sensors[i]-20;
+
+        walidacja = readValue(&sensors[i], -100.0, 200.0);
+        if (walidacja != 1) {
+            sensors[i]+=20;
+            printf("(maksymalny do skalibrowanmia) ");
+        }
         printf("Sensor %d: %.1f\n",i,sensors[i]);
+        i++;
     }
     printf(".............................\n\n");
 }
@@ -140,20 +157,35 @@ int findFaultySensor(double sensors[], int n, double minAllowed, double maxAllow
 }
 
 
-void modifySensor(double sensors[], int n, int index){
-
+void modifySensor(double sensors[], int n, int index) {
     printf("\nNumer czujnika: %d\n\nAktualny poziom: %f",index,sensors[index-1]);
     printf("\nPodaj nowa wartosc: ");
 
-    int p;
+    double p;
 
-    while(1){
-        if(scanf("%d", &p) != 1 || p > 200.0 || p < -100.0){
-            printf("\nzla wartosc! Podaj prawidlowa: \n");
+    while(1) {
+        if(scanf("%lf", &p) != 1 ){
+            printf("\nZle dane: \n");
             while (getchar() != '\n');
             continue;
-        }else break;
+        }else {
+            walidacja = readValue(&p, -100.0, 200.0);
+            if (walidacja != 1) {
+                printf("Zla wartosc przedial od -100 do 200!\n");
+                continue;
+            }
+            break;
+        }
     }
+        sensors[index-1]=p;
 
-    sensors[index-1]=p;
+}
+
+
+int readValue(double *value, double min, double max){
+
+    if (*value < -100.0 || 200 < *value ) {
+        return 0;
+    }return 1;
+
 }
