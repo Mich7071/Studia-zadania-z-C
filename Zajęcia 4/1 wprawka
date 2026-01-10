@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <math.h>
+
+double amplifiedSignal(double baseValue, double gain, int steps);
+
+double sn=0.0;
+
+int main() {
+    double baseValue,
+    printf("Podaj wartość podstawową: ");
+    scanf("%lf",baseValue);
+
+
+    return 0;
+}
+
+double amplifiedSignal(double baseValue, double gain, int steps) {
+
+    return sn=baseValue*pow(gain,steps);
+
+}
