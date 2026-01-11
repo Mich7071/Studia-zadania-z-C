@@ -1,3 +1,12 @@
+/*W systemie pomiarowym sygnał zwiększa swoją wartość w czasie zgodnie ze stałym współczynnikiem wzmocnienia. Napisz funkcję:
+double amplifiedSignal(double baseValue, double gain, int steps);
+która oblicza wartość sygnału po steps krokach według wzoru:
+Sn​=baseValue×(gain)steps
+
+Wynik oblicz iteracyjnie za pomocą pętli.
+
+W funkcji main() wczytaj wartości od użytkownika, wywołaj funkcję i wyświetl wynik.*/
+
 #include <stdio.h>
 
 double amplifiedSignal(double baseValue, double gain, int steps);
