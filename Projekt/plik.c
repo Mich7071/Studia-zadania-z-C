@@ -1,16 +1,16 @@
 #include "plik.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 struct Bohaterowie *lista() {
 
     FILE *f = fopen("bohaterowie.txt","r");
 
     if (!f) {
-        printf("Error pobrania pliku\n");
+        fprintf(stderr, "Error pobranie pliku.log\n");
         exit(1);
     }
+<<<<<<< HEAD
     struct Bohaterowie *HEAD = NULL;
     char buforImie[102];
 
@@ -38,4 +38,7 @@ struct Bohaterowie *lista() {
 
     fclose(f);
     return HEAD;
+=======
+
+>>>>>>> parent of a4d5173 (dodatnie listy jedno kierunkowej i sprawdzanie błędów )
 }
