@@ -27,8 +27,9 @@ struct Bohaterowie *lista() {
         fscanf(f, "%14s", nowy->klasa);
 
         int status;
-        fscanf(f, "%d", &nowy->status);
+        fscanf(f, "%d", &status);
         nowy->status = (StatusBohatera)status;
+
         fscanf(f, "%d", &nowy->dni);
 
 
