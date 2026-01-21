@@ -6,4 +6,6 @@ void odpal_generator();
 
 enum Planeta losowanie_planety();
 
+struct Bohaterowie *nowy_bohater(struct Bohaterowie *ostatni);
+
 #endif
