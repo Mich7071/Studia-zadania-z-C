@@ -35,7 +35,7 @@ struct Bohaterowie *nowy_bohater(struct Bohaterowie *ostatni) {
     printf("\nPodaj nazwę Bohatera (Do 100 znaków): ");
 
     while (1) {
-        if(scanf("%100s", nazwa) != 1) {
+        if(scanf("%100[^\n]s", nazwa) != 1) {
             while (getchar() != '\n');
             printf("\nZle dane!\n");
             continue;
@@ -181,4 +181,5 @@ struct Bohaterowie *nowy_bohater(struct Bohaterowie *ostatni) {
 
     return tmp;
 }
+
 
