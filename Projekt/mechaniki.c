@@ -177,7 +177,6 @@ struct Bohaterowie *nowy_bohater(struct Bohaterowie *ostatni) {
 }
 
 
-
 void edycja(struct Bohaterowie *bohaterowie) {
     char postac[101];
     int decyzja, rasa, poziom, reputacja, klasa, status;
@@ -373,4 +372,122 @@ void edycja(struct Bohaterowie *bohaterowie) {
             printf("\nNie ma takiej osoby! Sprobuj ponownie.\n");
         }
     }
+}
+
+
+struct Bohaterowie *usun_bohatera1(struct Bohaterowie *head) {
+    char imie[101];
+
+    printf("\nPodaj imie: ");
+    while (1) {
+        if (scanf("%100[^\n]", imie) != 1) {
+            while (getchar() != '\n');
+            continue;
+        }else {
+            while (getchar() != '\n');
+            break;
+        }
+    }
+
+    struct Bohaterowie *bohaterdousuniecia = head;
+    struct Bohaterowie *poprzedni = NULL;
+
+    while (bohaterdousuniecia != NULL) {
+        if (strcmp(bohaterdousuniecia->imie, imie) == 0) {
+            if (bohaterdousuniecia->status == NA_MISJI) {
+                printf("Blad, Bohater jest na misji!\n");
+                return head;
+            }
+
+            if (poprzedni == NULL) {
+                head = bohaterdousuniecia->Next;
+            }
+            else {
+                poprzedni->Next = bohaterdousuniecia->Next;
+            }
+
+            free(bohaterdousuniecia);
+            printf("Usunieto.\n");
+            return head;
+        }
+        poprzedni = bohaterdousuniecia;
+        bohaterdousuniecia = bohaterdousuniecia->Next;
+    }
+    printf("Nie znaleziono.\n");
+    return head;
+}
+
+
+struct Bohaterowie *usun_bohaterow2(struct Bohaterowie *head) {
+    int poziom;
+
+    printf("\nUsun wszystkich ponizej poziomu: ");
+
+    printf("Podaj poziom (1-100): ");
+
+    while (1) {
+        if (scanf("%d", &poziom) != 1 || poziom < 0 || poziom > 100) {
+            printf("\nBlad!\n ");
+            while (getchar() != '\n');
+            continue;
+        }else {
+            while (getchar() != '\n');
+            break;
+        }
+    }
+
+    struct Bohaterowie *bohaterdousuniecia = head;
+    struct Bohaterowie *poprzedni = NULL;
+
+    while (bohaterdousuniecia != NULL) {
+
+        if (bohaterdousuniecia->poziom < poziom && bohaterdousuniecia->status != NA_MISJI) {
+            struct Bohaterowie *temp = bohaterdousuniecia;
+
+            if (poprzedni == NULL) {
+                head = bohaterdousuniecia->Next;
+                bohaterdousuniecia = head;
+            } else {
+                poprzedni->Next = bohaterdousuniecia->Next;
+                bohaterdousuniecia = bohaterdousuniecia->Next;
+            }
+            free(temp);
+            printf("Usunieto bohatera.\n");
+        } else {
+            poprzedni = bohaterdousuniecia;
+            bohaterdousuniecia = bohaterdousuniecia->Next;
+        }
+    }
+    return head;
+}
+
+
+
+struct Bohaterowie *usun_bohatera(struct Bohaterowie *head) {
+    int wybor;
+
+    if (!head) {
+        printf("Lista pusta.\n");
+        return NULL;
+    }
+
+    printf("\n1. Usun po imieniu"
+           "\n2. Usun slabych (grupowo)"
+           "\nWybor: ");
+
+    while (1) {
+        if (scanf("%d", &wybor) != 1) {
+            while (getchar() != '\n');
+            printf("\nBlad! Podaj liczbe: ");
+            continue;
+        } else {
+            while (getchar() != '\n');
+            break;
+        }
+    }
+
+    if (wybor == 1) return usun_bohatera1(head);
+    if (wybor == 2) return usun_bohaterow2(head);
+
+    return head;
 }
