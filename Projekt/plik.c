@@ -40,3 +40,25 @@ struct Bohaterowie *lista() {
     fclose(f);
     return HEAD;
 }
+
+
+void zapis_do_txt(struct Bohaterowie *bohaterowie){
+
+    FILE *f = fopen("bohaterowie.txt", "w");
+
+    while (bohaterowie->imie != NULL) {
+        fprintf(f,"%s\n",bohaterowie->imie);
+        fprintf(f,"%s\n",bohaterowie->rasa);
+        fprintf(f,"%d\n",bohaterowie->poziom);
+        fprintf(f,"%d\n",bohaterowie->reputacja);
+        fprintf(f,"%s\n",bohaterowie->klasa);
+
+        int tymczasowa = (int) bohaterowie->status;
+        fprintf(f,"%d\n",tymczasowa);
+
+        fprintf(f,"%d\n",bohaterowie->dni);
+
+        bohaterowie = bohaterowie->Next;
+    }
+    fclose(f);
+}
