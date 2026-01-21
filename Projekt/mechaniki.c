@@ -187,7 +187,7 @@ void wyswietlenie_listy(struct Bohaterowie *bohaterowie) {
 
     printf("\nLista bohaterow\n");
 
-    while (bohaterowie->imie != NULL) {
+    while (bohaterowie != NULL) {
         printf("\n\n--- Bohater nr %d ---\n", i);
         printf("Imie: %s\n",bohaterowie->imie);
         printf("Rasa: %s\n",bohaterowie->rasa);
@@ -208,4 +208,5 @@ void wyswietlenie_listy(struct Bohaterowie *bohaterowie) {
         i++;
     }
 }
+
 
