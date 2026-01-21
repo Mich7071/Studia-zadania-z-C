@@ -4,14 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 
-void odpal_generator() {
-
-    srand(time(NULL));
-}
-
 
 enum Planeta losowanie_planety(){
-    odpal_generator();
 
     int dzien = rand() % 7;
     return dzien;
@@ -182,31 +176,201 @@ struct Bohaterowie *nowy_bohater(struct Bohaterowie *ostatni) {
     return tmp;
 }
 
-void wyswietlenie_listy(struct Bohaterowie *bohaterowie) {
-    int i=0;
 
-    printf("\nLista bohaterow\n");
 
-    while (bohaterowie != NULL) {
-        printf("\n\n--- Bohater nr %d ---\n", i);
-        printf("Imie: %s\n",bohaterowie->imie);
-        printf("Rasa: %s\n",bohaterowie->rasa);
-        printf("Poziom: %d\n",bohaterowie->poziom);
-        printf("Reputacja: %d\n",bohaterowie->reputacja);
-        printf("Klasa: %s\n",bohaterowie->klasa);
+void edycja(struct Bohaterowie *bohaterowie) {
+    char postac[101];
+    int decyzja, rasa, poziom, reputacja, klasa, status;
+    struct Bohaterowie *f = bohaterowie;
 
-        printf("Status: ");
-        switch(bohaterowie->status) {
-            case AKTYWNY:    printf("Aktywny"); break;
-            case NA_MISJI:   printf("Na misji"); break;
-            case RANNY:      printf("Ranny"); break;
-            case ZAGINIONY:  printf("Zaginiony"); break;
-            case ZAWIESZONY: printf("Zawieszony"); break;
+    printf("\n------------------------------------------------------------------------------\n");
+
+
+    while (1) {
+        printf("\nJakiego bohatera chcesz edytowac (Podaj imie): ");
+
+        if (scanf(" %100[^\n]", postac) != 1) {
+            while (getchar() != '\n');
+            continue;
         }
 
-        bohaterowie = bohaterowie->Next;
-        i++;
+
+        struct Bohaterowie *obecny = f;
+        int znaleziono = 0;
+
+        while (obecny != NULL) {
+            if (strcmp(obecny->imie, postac) == 0) {
+                znaleziono = 1;
+
+                while (1) {
+                    printf("\nEdycja:"
+                           "\n1. Rasa"
+                           "\n2. Poziom"
+                           "\n3. Reputacja"
+                           "\n4. Klasa"
+                           "\n5. Status"
+                           "\n6. Zakoncz edycje\nWybor: ");
+
+                    if(scanf(" %d", &decyzja) != 1) {
+                        while (getchar() != '\n');
+                        printf("\nZle dane!\n");
+                        continue;
+                    }
+
+                    switch(decyzja) {
+                        case 1: // Zmiana rasy
+                            printf("\nWybierz nowa rase:"
+                                   "\n1.Elf "
+                                   "\n2.Krasnal "
+                                   "\n3.Czlowiek "
+                                   "\n4.Mutant "
+                                   "\n5.Cyklop\n");
+
+                            while (1) {
+                                if(scanf("%d", &rasa) != 1 || rasa > 5 || rasa < 1) {
+                                    while (getchar() != '\n');
+                                    printf("Zle dane! ");
+                                    continue;
+                                } else break;
+                            }
+                            switch(rasa) {
+                                case 1:
+                                    strcpy(obecny->rasa, "Elf");
+                                    break;
+                                case 2:
+                                    strcpy(obecny->rasa, "Krasnal");
+                                    break;
+                                case 3:
+                                    strcpy(obecny->rasa, "Czlowiek");
+                                    break;
+                                case 4:
+                                    strcpy(obecny->rasa, "Mutant");
+                                    break;
+                                case 5:
+                                    strcpy(obecny->rasa, "Cyklop");
+                                    break;
+                            }
+                            printf("Zmieniono rase.\n");
+                            break;
+
+                        case 2: // Zmiana poziomu
+                            printf("\nPodaj nowy poziom: ");
+                            while (1) {
+                                if(scanf("%d", &poziom) != 1 || poziom > 100 || poziom < 0) {
+                                    while (getchar() != '\n');
+                                    printf("Zle dane! ");
+                                    continue;
+                                } else {
+                                    obecny->poziom = poziom;
+                                    break;
+                                }
+                            }
+                            break;
+
+                        case 3: // Zmiana reputacji
+                            printf("\nPodaj nowa reputacje: ");
+                            while (1) {
+                                if(scanf("%d", &reputacja) != 1 || reputacja > 100 || reputacja < 0) {
+                                    while (getchar() != '\n');
+                                    printf("Zle dane! ");
+                                    continue;
+                                } else {
+                                    obecny->reputacja = reputacja;
+                                    break;
+                                }
+                            }
+                            break;
+
+                        case 4:
+                            printf("\nWybierz nowa klase: "
+                                   "\n1.Rycerz "
+                                   "\n2.Strzelec "
+                                   "\n3.Snajper "
+                                   "\n4.Medyk "
+                                   "\n5.Zamachowiec "
+                                   "\n6.Mag\n");
+                            while (1) {
+                                if(scanf("%d", &klasa) != 1 || klasa > 6 || klasa < 1) {
+                                    while (getchar() != '\n');
+                                    printf("Zle dane! ");
+                                    continue;
+                                } else break;
+                            }
+                            switch(klasa) {
+                                case 1:
+                                    strcpy(obecny->klasa, "Rycerz");
+                                    break;
+                                case 2:
+                                    strcpy(obecny->klasa, "Strzelec");
+                                    break;
+                                case 3:
+                                    strcpy(obecny->klasa, "Snajper");
+                                    break;
+                                case 4:
+                                    strcpy(obecny->klasa, "Medyk");
+                                    break;
+                                case 5:
+                                    strcpy(obecny->klasa, "Zamachowiec");
+                                    break;
+                                case 6:
+                                    strcpy(obecny->klasa, "Mag");
+                                    break;
+                            }
+                            break;
+
+                        case 5: // Zmiana statusu
+                            if (obecny->status == NA_MISJI) {
+                                printf("\nNie mozna edytowac statusu, bohater jest na misji\n");
+                                break;
+                            }
+
+                            printf("\nWybierz status: "
+                                   "\n1.AKTYWNY "
+                                   "\n2.NA_MISJI "
+                                   "\n3.RANNY "
+                                   "\n4.ZAGINIONY "
+                                   "\n5.ZAWIESZONY\n");
+                            while (1) {
+                                if(scanf("%d", &status) != 1 || status > 5 || status < 1) {
+                                    while (getchar() != '\n');
+                                    printf("Zle dane! ");
+                                    continue;
+                                } else break;
+                            }
+
+                            switch(status) {
+                                case 1:
+                                    obecny->status = AKTYWNY;
+                                    break;
+                                case 2:
+                                    obecny->status = NA_MISJI;
+                                    break;
+                                case 3:
+                                    obecny->status = RANNY;
+                                    break;
+                                case 4:
+                                    obecny->status = ZAGINIONY;
+                                    break;
+                                case 5:
+                                    obecny->status = ZAWIESZONY;
+                                    break;
+                            }
+                            printf("Zmieniono status.\n");
+                            break;
+
+                        case 6: //exit
+                            return;
+
+                        default:
+                            printf("Nie ma takiej opcji.\n");
+                    }
+                }
+            }
+            obecny = obecny->Next;
+        }
+
+        if (znaleziono == 0) {
+            printf("\nNie ma takiej osoby! Sprobuj ponownie.\n");
+        }
     }
 }
-
-
