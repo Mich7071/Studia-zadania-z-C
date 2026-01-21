@@ -462,7 +462,6 @@ struct Bohaterowie *usun_bohaterow2(struct Bohaterowie *head) {
 }
 
 
-
 struct Bohaterowie *usun_bohatera(struct Bohaterowie *head) {
     int wybor;
 
@@ -490,4 +489,82 @@ struct Bohaterowie *usun_bohatera(struct Bohaterowie *head) {
     if (wybor == 2) return usun_bohaterow2(head);
 
     return head;
+}
+
+
+void wyszukaj_bohatera(struct Bohaterowie *head) {
+    int wybor, rep, ilosc=0;
+    char szukana[15];
+    int znaleziono = 0;
+
+    if (head == NULL) {
+        printf("Lista jest pusta.\n");
+        return;
+    }
+
+
+    printf("\nSzukaj rasy:"
+           "\n1.Elf "
+           "\n2.Krasnal "
+           "\n3.Czlowiek "
+           "\n4.Mutant "
+           "\n5.Cyklop"
+           "\nWybor: ");
+
+    while (1) {
+        if (scanf("%d", &wybor) != 1 || wybor < 1 || wybor > 5) {
+            printf("Blad, Wybierz 1-5: ");
+            while (getchar() != '\n');
+            continue;
+        }else {
+            while (getchar() != '\n');
+            break;
+        }
+    }
+
+    switch(wybor) {
+        case 1:
+            strcpy(szukana, "Elf");
+            break;
+        case 2:
+            strcpy(szukana, "Krasnal");
+            break;
+        case 3:
+            strcpy(szukana, "Czlowiek");
+            break;
+        case 4:
+            strcpy(szukana, "Mutant");
+            break;
+        case 5:
+            strcpy(szukana, "Cyklop");
+            break;
+    }
+
+
+    printf("Podaj minimalna reputacje (0-100): ");
+
+    while (1) {
+        if (scanf("%d", &rep) != 1 || rep < 0 || rep > 100) {
+            printf("\nBlad!\n ");
+            while (getchar() != '\n');
+            continue;
+        }
+        while (getchar() != '\n');
+        break;
+    }
+
+    while (head != NULL) {
+
+        if (strcmp(head->rasa, szukana) == 0 && head->reputacja >= rep) {
+            ilosc++;
+            printf("%d.Imie: %s              | Poziom: %d  \n",ilosc, head->imie, head->reputacja);
+
+            znaleziono = 1;
+        }
+        head = head->Next;
+    }
+
+    if (znaleziono == 0) {
+        printf("Brak wynikow.\n");
+    }
 }
