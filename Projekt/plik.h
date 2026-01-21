@@ -4,6 +4,7 @@
 
 struct Bohaterowie *lista();
 
+void zapis_do_txt(struct Bohaterowie *bohaterowie);
 
 
 #endif
