@@ -8,4 +8,7 @@ enum Planeta losowanie_planety();
 
 struct Bohaterowie *nowy_bohater(struct Bohaterowie *ostatni);
 
+void wyswietlenie_listy(struct Bohaterowie *bohaterowie);
+
 #endif
+
