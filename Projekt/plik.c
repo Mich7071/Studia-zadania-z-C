@@ -28,7 +28,7 @@ struct Bohaterowie *lista() {
 
         int status;
         fscanf(f, "%d", &status);
-        nowy->status = (StatusBohatera)status;
+        nowy->status = (StatusBohatera)status;//enum jest logiką
 
         fscanf(f, "%d", &nowy->dni);
 
@@ -41,12 +41,11 @@ struct Bohaterowie *lista() {
     return HEAD;
 }
 
-
 void zapis_do_txt(struct Bohaterowie *bohaterowie){
 
     FILE *f = fopen("bohaterowie.txt", "w");
 
-    while (bohaterowie->imie != NULL) {
+    while (bohaterowie != NULL) {
         fprintf(f,"%s\n",bohaterowie->imie);
         fprintf(f,"%s\n",bohaterowie->rasa);
         fprintf(f,"%d\n",bohaterowie->poziom);
@@ -61,4 +60,13 @@ void zapis_do_txt(struct Bohaterowie *bohaterowie){
         bohaterowie = bohaterowie->Next;
     }
     fclose(f);
+}
+
+void zwolnijpamiec(struct Bohaterowie *head) {
+    struct Bohaterowie *tmp;
+    while (head != NULL) {
+        tmp = head;
+        head = head->Next;
+        free(tmp);
+    }
 }
