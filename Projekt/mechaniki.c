@@ -182,4 +182,30 @@ struct Bohaterowie *nowy_bohater(struct Bohaterowie *ostatni) {
     return tmp;
 }
 
+void wyswietlenie_listy(struct Bohaterowie *bohaterowie) {
+    int i=0;
+
+    printf("\nLista bohaterow\n");
+
+    while (bohaterowie->imie != NULL) {
+        printf("\n\n--- Bohater nr %d ---\n", i);
+        printf("Imie: %s\n",bohaterowie->imie);
+        printf("Rasa: %s\n",bohaterowie->rasa);
+        printf("Poziom: %d\n",bohaterowie->poziom);
+        printf("Reputacja: %d\n",bohaterowie->reputacja);
+        printf("Klasa: %s\n",bohaterowie->klasa);
+
+        printf("Status: ");
+        switch(bohaterowie->status) {
+            case AKTYWNY:    printf("Aktywny"); break;
+            case NA_MISJI:   printf("Na misji"); break;
+            case RANNY:      printf("Ranny"); break;
+            case ZAGINIONY:  printf("Zaginiony"); break;
+            case ZAWIESZONY: printf("Zawieszony"); break;
+        }
+
+        bohaterowie = bohaterowie->Next;
+        i++;
+    }
+}
 
